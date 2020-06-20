@@ -26,7 +26,7 @@ app.use(cors())
 
 app.get('/', (req, res) => {
 	db.select('*').from('users')
-	.then(data => res.send(data))
+	.then(data => res.send('Server Up!'))
 	.catch(err => res.status(400).json("Error getting users"));
 });
 
@@ -42,6 +42,7 @@ app.post('/face', (req, res) => {profile.handleFaceDetect(req, res)});
 
 
 //Server ports
-app.listen(3001, () => {
-	console.log("Server is running on port 3001");	
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+	console.log(`Server is running on port ${port}`);	
 });
