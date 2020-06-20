@@ -24,11 +24,7 @@ app.use(express.json());
 
 app.use(cors())
 
-app.get('/', (req, res) => {
-	db.select('*').from('users')
-	.then(data => res.send('Server Up!'))
-	.catch(err => res.status(400).json("Error getting users"));
-});
+app.get('/', (req, res) => res.send('Server Up!'));
 
 app.post('/signin', (req, res) => {signin.handleSignIn(req, res, db, bcrypt)});
 
